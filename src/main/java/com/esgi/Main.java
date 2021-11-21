@@ -2,6 +2,7 @@ package com.esgi;
 
 import com.esgi.domain.models.MembershipApplication;
 import com.esgi.domain.validators.MembershipValidator;
+import com.esgi.infrastructure.ConsoleLogger;
 import com.esgi.infrastructure.InMemoryMembershipRepository;
 import com.esgi.infrastructure.MembershipService;
 import com.esgi.infrastructure.Membershipcontroller;
@@ -9,9 +10,10 @@ import com.esgi.services.StubPaymentService;
 
 public class Main {
     public static void main(String[] args) {
+        var logger = new ConsoleLogger();
         var membershipRepo = new InMemoryMembershipRepository();
-        var membershipValidator = new MembershipValidator();
-        var stubPaymentService = new StubPaymentService();
+        var membershipValidator = new MembershipValidator(logger);
+        var stubPaymentService = new StubPaymentService(logger);
 
         var membershipService = new MembershipService(membershipRepo, stubPaymentService, membershipValidator);
         var membershipController = new Membershipcontroller(membershipService);
