@@ -2,8 +2,8 @@ package com.esgi.services;
 
 import com.esgi.infrastructure.Logger;
 
-public class StubPaymentService implements PaymentService{
-    private Logger logger;
+public class StubPaymentService implements PaymentService {
+    private final Logger logger;
 
     public StubPaymentService(Logger logger) {
         this.logger = logger;

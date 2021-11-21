@@ -6,9 +6,9 @@ import com.esgi.domain.validators.Predicate;
 import com.esgi.services.PaymentService;
 
 public class MembershipService {
-    private MembershipRepository repository;
-    private PaymentService paymentService;
-    private Predicate<MembershipApplication> membershipApplicationPredicate;
+    private final MembershipRepository repository;
+    private final PaymentService paymentService;
+    private final Predicate<MembershipApplication> membershipApplicationPredicate;
 
     public MembershipService(MembershipRepository repository, PaymentService paymentService, Predicate<MembershipApplication> membershipApplicationPredicate) {
         this.repository = repository;
@@ -16,7 +16,7 @@ public class MembershipService {
         this.membershipApplicationPredicate = membershipApplicationPredicate;
     }
 
-    public void add(MembershipApplication application){
+    public void add(MembershipApplication application) {
         if (membershipApplicationPredicate.validate(application) && paymentService.process()) {
             repository.add(new Membership(application.name, application.firstname, application.age));
         }

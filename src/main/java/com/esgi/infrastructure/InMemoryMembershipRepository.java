@@ -5,8 +5,8 @@ import com.esgi.domain.models.Membership;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InMemoryMembershipRepository implements MembershipRepository{
-    private List<Membership> memberships;
+public class InMemoryMembershipRepository implements MembershipRepository {
+    private final List<Membership> memberships;
 
     public InMemoryMembershipRepository() {
         this.memberships = new ArrayList<>();

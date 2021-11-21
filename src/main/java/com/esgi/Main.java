@@ -4,8 +4,8 @@ import com.esgi.domain.models.MembershipApplication;
 import com.esgi.domain.validators.MembershipValidator;
 import com.esgi.infrastructure.ConsoleLogger;
 import com.esgi.infrastructure.InMemoryMembershipRepository;
+import com.esgi.infrastructure.MembershipController;
 import com.esgi.infrastructure.MembershipService;
-import com.esgi.infrastructure.Membershipcontroller;
 import com.esgi.services.StubPaymentService;
 
 public class Main {
@@ -16,7 +16,7 @@ public class Main {
         var stubPaymentService = new StubPaymentService(logger);
 
         var membershipService = new MembershipService(membershipRepo, stubPaymentService, membershipValidator);
-        var membershipController = new Membershipcontroller(membershipService);
+        var membershipController = new MembershipController(membershipService);
 
         var membershipApplication = new MembershipApplication();
 
